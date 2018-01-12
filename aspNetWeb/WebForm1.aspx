@@ -15,7 +15,7 @@
         <button style="height: 55px; width: 84px; margin-left: 243px; margin-top: 0px">Oscar</button>
         <button style="height: 100px; width: 145px; margin-left: 300px; margin-top: 0px">Marcos</button>
         <button style="height: 94px; width: 123px; background-color: #0000FF;">MARIA LUISA</button>
-    </div>
+        <button style="height: 94px; width: 123px; background-color: #0000FF;"> Carlos</button>
     </form>
     <p>
     <button style="height: 104px; width: 135px">JJ</button>
