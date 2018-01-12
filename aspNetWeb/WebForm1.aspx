@@ -11,6 +11,7 @@
     <form id="form1" runat="server">
     <div>
     <button style="height: 104px; width: 135px">CRISTIAN</button>
+        <button style="height: 100px; width: 161px; margin-left: 236px; margin-top: 0px">juan carlos</button>
     </div>
     </form>
 </body>
