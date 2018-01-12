@@ -12,6 +12,7 @@
     <div>
     <button style="height: 104px; width: 135px">CRISTIAN</button>
         <button style="height: 100px; width: 161px; margin-left: 236px; margin-top: 0px">juan carlos</button>
+        <button style="height: 55px; width: 84px; margin-left: 243px; margin-top: 0px">Oscar</button>
     </div>
     </form>
 </body>
