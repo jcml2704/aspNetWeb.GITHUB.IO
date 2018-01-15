@@ -38,7 +38,7 @@ namespace aspNetWeb
 
         public DataTable consulta()
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM usuario;", baseDeDatos);
+            cmd = new MySqlCommand("SELECT * FROM usuario", baseDeDatos);
             
             DataTable dataTable = new DataTable();
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
