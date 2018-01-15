@@ -5,28 +5,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Formulario</title>
-    <style>
-        body{background-color:#b6c0f7}
-        #consultaH3{text-align:center}
-        #boton_crear {
-            width: 49px;
-        }
-        #nombre{margin-left:60px}
-        #puesto{margin-left:70px}
-        #organizacion{margin-left:30px}
-        #boton_crear{margin-left:80px}
-        .Cformulario{border-style: solid; border-width: 2px;}
-    </style>
+    <title></title>
 </head>
 <body>
-    <h3 id="consultaH3">MySQL</h3>
-    <form id:"formulario class="Cformulario">
-        <h3>Crear usuario</h3>
-    Nombre: <input type:"text" id="nombre"/> <br />  <br /> 
-    Puesto: <input type:"text" id="puesto" /> <br />  <br /> 
-    Organización: <input type:"text" id="organizacion" /> <br />  <br />
-    <button type:"button" id="boton_crear">Crear</button>
+    <form id="form1" runat="server">
+    <div>
+    
+    </div>
+        <p>
+            Nombre:
+            <asp:TextBox ID="nombre_text" runat="server" style="margin-left: 50px"></asp:TextBox>
+        </p>
+        <p>
+            Puesto:<asp:TextBox ID="puesto_text" runat="server" style="margin-left: 65px"></asp:TextBox>
+        </p>
+        <p>
+            Organización:<asp:TextBox ID="organizacion_text" runat="server" style="margin-left: 28px"></asp:TextBox>
+        </p>
+        <p>
+            <asp:Button ID="update_btn" runat="server" OnClick="update_btn_Click" style="margin-left: 178px" Text="Update" />
+        </p>
     </form>
 </body>
 </html>
