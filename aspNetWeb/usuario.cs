@@ -9,10 +9,10 @@ namespace aspNetWeb
     {
         string nombre;
         string puesto;
-        string organizacion;
+        int organizacion;
 
 
-        public usuario(string nomb,string puest,string org)
+        public usuario(string nomb,string puest,int org)
         {
             nombre = nomb;
             puesto = puest;
@@ -32,7 +32,7 @@ namespace aspNetWeb
             return puesto;
         }
 
-        public string getOrganizacion()
+        public int getOrganizacion()
         {
             return organizacion;
         }
@@ -49,7 +49,7 @@ namespace aspNetWeb
             puesto=puest;
         }
 
-        public void setOrganizacion(string org)
+        public void setOrganizacion(int org)
         {
             organizacion = org;
         }

@@ -14,13 +14,13 @@
     </div>
         <p>
             Nombre:
-            <asp:TextBox ID="nombre_text" runat="server" style="margin-left: 50px"></asp:TextBox>
+            <asp:TextBox ID="nombre_text" runat="server" style="margin-left: 58px"></asp:TextBox>
         </p>
         <p>
-            Puesto:<asp:TextBox ID="puesto_text" runat="server" style="margin-left: 65px"></asp:TextBox>
+            Puesto:<asp:TextBox ID="puesto_text" runat="server" style="margin-left: 71px"></asp:TextBox>
         </p>
         <p>
-            Organización:<asp:TextBox ID="organizacion_text" runat="server" style="margin-left: 28px"></asp:TextBox>
+            Organización:<asp:TextBox ID="organizacion_text" runat="server" style="margin-left: 33px"></asp:TextBox>
         </p>
         <p>
             <asp:Button ID="update_btn" runat="server" OnClick="update_btn_Click" style="margin-left: 178px" Text="Update" />

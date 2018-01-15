@@ -19,7 +19,7 @@ namespace aspNetWeb
 
         protected void update_btn_Click(object sender, EventArgs e)
         {
-            usuarioPrueba = new usuario(nombre_text.Text, puesto_text.Text, organizacion_text.Text);
+            usuarioPrueba = new usuario(nombre_text.Text, puesto_text.Text, int.Parse(organizacion_text.Text));
             
         }
     }
