@@ -24,8 +24,8 @@ namespace aspNetWeb
             baseDeDatos = new MySqlConnection(builder.ToString());
             cmd = baseDeDatos.CreateCommand();
             baseDeDatos.Open();
-
         }
+
 
         public void insert(string nomb,string ape,int tlf,string ema,string puest, int org)
         {
@@ -33,19 +33,19 @@ namespace aspNetWeb
             cmd.ExecuteNonQuery();
         }
 
+
         public void delete(int id)
         {
             cmd.CommandText = "Delete from usuario where id=" + id;    
             cmd.ExecuteNonQuery();
         }
 
+
         public void update(int id,string nomb,string apell,int tlf,string ema,string pues,int org_id)
         {
             cmd.CommandText = " Update usuario set nombre='" + nomb + "',apellido='"+apell+ "',telefono='" + tlf + "',email='" + ema + "',puesto='" + pues + "',organizacion_id='" + org_id + "' where id='" + id+"'";
             cmd.ExecuteNonQuery();
         }
-
-
 
 
         public DataTable consulta()

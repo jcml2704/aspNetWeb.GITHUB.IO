@@ -12,8 +12,8 @@ namespace aspNetWeb
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
-        
         BBDD bdatos;
+
 
         public WebForm1()
         {
@@ -30,12 +30,14 @@ namespace aspNetWeb
                 
         }
 
+
         protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             GridView1.EditIndex = -1;
             actualizarGridview();
             Response.Redirect("WebForm1.aspx");
         }
+
 
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
@@ -45,12 +47,13 @@ namespace aspNetWeb
             Response.Redirect("WebForm1.aspx");
         }
 
+
         protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
         {
             GridView1.EditIndex = e.NewEditIndex;
-            actualizarGridview();
-            
+            actualizarGridview(); 
         }
+
 
         protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
@@ -67,16 +70,13 @@ namespace aspNetWeb
             Response.Redirect("WebForm1.aspx");
         }
 
+
         public void actualizarGridview()
         {
             GridView1.DataSource = bdatos.consulta();
             GridView1.DataBind();
         }
 
-        protected void insertar_click(object sender, EventArgs e)
-        {
-          
-        }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
