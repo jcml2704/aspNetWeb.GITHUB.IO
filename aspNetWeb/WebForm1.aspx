@@ -9,29 +9,16 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-    
-    </div>
-        <p>
-            Nombre:
-            <asp:TextBox ID="nombre_text1" runat="server" style="margin-left: 58px"></asp:TextBox>
-        </p>
-        <p>
-            Puesto:<asp:TextBox ID="puesto_text" runat="server" style="margin-left: 71px"></asp:TextBox>
-        </p>
-        <p>
-            Organización:<asp:TextBox ID="organizacion_text" runat="server" style="margin-left: 33px"></asp:TextBox>
-        </p>
-        <p>
-            <asp:Button ID="update_btn" runat="server" OnClick="update_btn_Click" style="margin-left: 178px" Text="Update" />
-        </p>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataKeyNames="Id" GridLines="Horizontal" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating">
-            <AlternatingRowStyle BackColor="#F7F7F7" />
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" GridLines="None" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" ShowFooter="True" OnRowCommand="GridView1_RowCommand" ForeColor="#333333" >
+            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
                 <asp:TemplateField HeaderText="nombre">
                     <EditItemTemplate>
                         <asp:TextBox ID="nombre_text" runat="server" Text='<%# Eval("nombre") %>'></asp:TextBox>
                     </EditItemTemplate>
+                    <FooterTemplate>
+                        <asp:TextBox ID="nombre_insert_text" runat="server"></asp:TextBox>
+                    </FooterTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label1" runat="server" Text='<%# Eval("nombre") %>'></asp:Label>
                     </ItemTemplate>
@@ -40,6 +27,9 @@
                     <EditItemTemplate>
                         <asp:TextBox ID="apellido_text" runat="server" Text='<%# Eval("apellido") %>'></asp:TextBox>
                     </EditItemTemplate>
+                    <FooterTemplate>
+                        <asp:TextBox ID="apellido_insert_text" runat="server"></asp:TextBox>
+                    </FooterTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label2" runat="server" Text='<%# Eval("apellido") %>'></asp:Label>
                     </ItemTemplate>
@@ -48,6 +38,9 @@
                     <EditItemTemplate>
                         <asp:TextBox ID="telefono_text" runat="server" Text='<%# Eval("telefono") %>'></asp:TextBox>
                     </EditItemTemplate>
+                    <FooterTemplate>
+                        <asp:TextBox ID="telefono_insert_text" runat="server"></asp:TextBox>
+                    </FooterTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label3" runat="server" Text='<%# Eval("telefono") %>'></asp:Label>
                     </ItemTemplate>
@@ -56,6 +49,9 @@
                     <EditItemTemplate>
                         <asp:TextBox ID="email_text" runat="server" Text='<%# Eval("email") %>'></asp:TextBox>
                     </EditItemTemplate>
+                    <FooterTemplate>
+                        <asp:TextBox ID="email_insert_text" runat="server"></asp:TextBox>
+                    </FooterTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label4" runat="server" Text='<%# Eval("email") %>'></asp:Label>
                     </ItemTemplate>
@@ -64,6 +60,9 @@
                     <EditItemTemplate>
                         <asp:TextBox ID="puesto_text" runat="server" Text='<%# Eval("puesto") %>'></asp:TextBox>
                     </EditItemTemplate>
+                    <FooterTemplate>
+                        <asp:TextBox ID="puesto_insert_text" runat="server"></asp:TextBox>
+                    </FooterTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label5" runat="server" Text='<%# Eval("puesto") %>'></asp:Label>
                     </ItemTemplate>
@@ -72,21 +71,37 @@
                     <EditItemTemplate>
                         <asp:TextBox ID="organizacion_id_text" runat="server" Text='<%# Eval("organizacion_id") %>'></asp:TextBox>
                     </EditItemTemplate>
+                    <FooterTemplate>
+                        <asp:TextBox ID="organizacion_id_insert_text" runat="server"></asp:TextBox>
+                    </FooterTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label6" runat="server" Text='<%# Eval("organizacion_id") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:CommandField HeaderText="Operaciones" ShowDeleteButton="True" ShowEditButton="True" ShowHeader="True" />
+                <asp:TemplateField HeaderText="Operaciones">
+                    <EditItemTemplate>
+                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="True" CommandName="Update" Text="Actualizar"></asp:LinkButton>
+                        &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar"></asp:LinkButton>
+                    </EditItemTemplate>
+                    <FooterTemplate>
+                        <asp:Button ID="insert" runat="server" Text="agregar" CommandName="insert"  />
+                    </FooterTemplate>
+                    <ItemTemplate>
+                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Edit" Text="Editar"></asp:LinkButton>
+                        &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Delete" Text="Eliminar"></asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
-            <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
-            <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
-            <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
-            <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
-            <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
-            <SortedAscendingCellStyle BackColor="#F4F4FD" />
-            <SortedAscendingHeaderStyle BackColor="#5A4C9D" />
-            <SortedDescendingCellStyle BackColor="#D8D8F0" />
-            <SortedDescendingHeaderStyle BackColor="#3E3277" />
+            <EditRowStyle BackColor="#999999" />
+            <FooterStyle BackColor="#5D7B9D" ForeColor="White" Font-Bold="True" />
+            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#E9E7E2" />
+            <SortedAscendingHeaderStyle BackColor="#506C8C" />
+            <SortedDescendingCellStyle BackColor="#FFFDF8" />
+            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
     </form>
 </body>

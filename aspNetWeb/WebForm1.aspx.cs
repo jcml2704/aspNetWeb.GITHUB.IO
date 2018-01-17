@@ -30,16 +30,6 @@ namespace aspNetWeb
                 
         }
 
-        protected void update_btn_Click(object sender, EventArgs e)
-        {   
-            bdatos.insert(nombre_text1.Text, puesto_text.Text, int.Parse(organizacion_text.Text));
-            nombre_text1.Text = null;
-            puesto_text.Text = null;
-            organizacion_text.Text = null;
-        }
-
-       
-
         protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             GridView1.EditIndex = -1;
@@ -81,6 +71,27 @@ namespace aspNetWeb
         {
             GridView1.DataSource = bdatos.consulta();
             GridView1.DataBind();
+        }
+
+        protected void insertar_click(object sender, EventArgs e)
+        {
+          
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName.Equals("insert"))
+            {
+                TextBox nombre_text = (TextBox)GridView1.FooterRow.FindControl("nombre_insert_text");
+                TextBox apellido_text = (TextBox)GridView1.FooterRow.FindControl("apellido_insert_text");
+                TextBox telefono_text = (TextBox)GridView1.FooterRow.FindControl("telefono_insert_text");
+                TextBox email_text = (TextBox)GridView1.FooterRow.FindControl("email_insert_text");
+                TextBox puesto_text = (TextBox)GridView1.FooterRow.FindControl("puesto_insert_text");
+                TextBox organizacion_id_text = (TextBox)GridView1.FooterRow.FindControl("organizacion_id_insert_text");
+                bdatos.insert( nombre_text.Text, apellido_text.Text, int.Parse(telefono_text.Text), email_text.Text, puesto_text.Text, int.Parse(organizacion_id_text.Text));
+                actualizarGridview();
+                Response.Redirect("WebForm1.aspx");
+            }
         }
     }
 }

@@ -27,9 +27,9 @@ namespace aspNetWeb
 
         }
 
-        public void insert(string nomb,string puest, int org)
+        public void insert(string nomb,string ape,int tlf,string ema,string puest, int org)
         {
-            cmd.CommandText = "INSERT INTO usuario (nombre,puesto,organizacion_id) values ('"+nomb +"','"+puest+"',"+org+")";
+            cmd.CommandText = "INSERT INTO usuario (nombre,apellido,telefono,email,puesto,organizacion_id) values ('"+nomb + "','" + ape + "','" + tlf + "','" + ema + "','" + puest+"',"+org+")";
             cmd.ExecuteNonQuery();
         }
 
