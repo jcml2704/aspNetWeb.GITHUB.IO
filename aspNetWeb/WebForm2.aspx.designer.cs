@@ -10,7 +10,7 @@
 namespace aspNetWeb {
     
     
-    public partial class WebForm1 {
+    public partial class WebForm2 {
         
         /// <summary>
         /// Control form1.
@@ -31,12 +31,12 @@ namespace aspNetWeb {
         protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
-        /// Control btn_volver.
+        /// Control Button2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_volver;
+        protected global::System.Web.UI.WebControls.Button Button2;
     }
 }

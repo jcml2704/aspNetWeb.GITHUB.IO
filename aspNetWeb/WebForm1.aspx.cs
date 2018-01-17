@@ -76,6 +76,10 @@ namespace aspNetWeb
             GridView1.DataSource = bdatos.consulta();
             GridView1.DataBind();
         }
+        protected void btn_volver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("WebForm3.aspx");
+        }
 
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
