@@ -22,13 +22,13 @@ namespace aspNetWeb {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control nombre_text.
+        /// Control nombre_text1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox nombre_text;
+        protected global::System.Web.UI.WebControls.TextBox nombre_text1;
         
         /// <summary>
         /// Control puesto_text.

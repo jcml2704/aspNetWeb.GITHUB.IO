@@ -21,28 +21,38 @@ namespace aspNetWeb
             builder.UserID = "cursomaster";
             builder.Password = "cursomaster2018";
             builder.Database = "Proyecto";
-
             baseDeDatos = new MySqlConnection(builder.ToString());
             cmd = baseDeDatos.CreateCommand();
             baseDeDatos.Open();
-           
+
         }
 
         public void insert(string nomb,string puest, int org)
         {
-            cmd.CommandText = "INSERT INTO usuario (Id,nombre,puesto,organizacion_id) values (0,'"+nomb +"','"+puest+"',"+org+")";
+            cmd.CommandText = "INSERT INTO usuario (nombre,puesto,organizacion_id) values ('"+nomb +"','"+puest+"',"+org+")";
             cmd.ExecuteNonQuery();
         }
 
-       
+        public void delete(int id)
+        {
+            cmd.CommandText = "Delete from usuario where id=" + id;    
+            cmd.ExecuteNonQuery();
+        }
+
+        public void update(int id,string nomb,string apell,int tlf,string ema,string pues,int org_id)
+        {
+            cmd.CommandText = " Update usuario set nombre='" + nomb + "',apellido='"+apell+ "',telefono='" + tlf + "',email='" + ema + "',puesto='" + pues + "',organizacion_id='" + org_id + "' where id='" + id+"'";
+            cmd.ExecuteNonQuery();
+        }
+
+
+
 
         public DataTable consulta()
         {
             cmd = new MySqlCommand("SELECT * FROM usuario", baseDeDatos);
-            
             DataTable dataTable = new DataTable();
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-
             da.Fill(dataTable);
             return dataTable;
         }
