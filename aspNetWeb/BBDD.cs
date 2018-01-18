@@ -13,6 +13,7 @@ namespace aspNetWeb
         MySqlConnection baseDeDatos;
         MySqlConnectionStringBuilder builder;
 
+        //Constructor, conexión a la base de dato
 
         public BBDD()
         {
@@ -25,28 +26,32 @@ namespace aspNetWeb
             cmd = baseDeDatos.CreateCommand();
             baseDeDatos.Open();
         }
-
+        
+        //Comando para insertar una nueva fila, para ello necesitamos recibir los datos correspondiente que se van a insertar
 
         public void insert(string nomb,string ape,int tlf,string ema,string puest, int org)
         {
-            cmd.CommandText = "INSERT INTO usuario (nombre,apellido,telefono,email,puesto,organizacion_id) values ('"+nomb + "','" + ape + "','" + tlf + "','" + ema + "','" + puest+"',"+org+")";
+            cmd.CommandText = "INSERT INTO usuario (nombre,apellido,telefono,email,puesto,organizacion_id) VALUES ('"+nomb + "','" + ape + "','" + tlf + "','" + ema + "','" + puest+"',"+org+")";
             cmd.ExecuteNonQuery();
         }
 
+        //Comando para eliminar una fila, para ello necesitamos recibir el id correspondiente de la fila que se quiere eliminar
 
         public void delete(int id)
         {
-            cmd.CommandText = "Delete from usuario where id=" + id;    
+            cmd.CommandText = "DELETE FROM usuario WHERE id=" + id;    
             cmd.ExecuteNonQuery();
         }
 
+        //Comando para actualizar una fila, para ello necesitamos recibir los datos correspondiente que se van a modificar
 
         public void update(int id,string nomb,string apell,int tlf,string ema,string pues,int org_id)
         {
-            cmd.CommandText = " Update usuario set nombre='" + nomb + "',apellido='"+apell+ "',telefono='" + tlf + "',email='" + ema + "',puesto='" + pues + "',organizacion_id='" + org_id + "' where id='" + id+"'";
+            cmd.CommandText = " UPDATE usuario SET nombre='" + nomb + "',apellido='"+apell+ "',telefono='" + tlf + "',email='" + ema + "',puesto='" + pues + "',organizacion_id='" + org_id + "' WHERE id='" + id+"'";
             cmd.ExecuteNonQuery();
         }
 
+        //Consulta y recogida de datos
 
         public DataTable consulta()
         {

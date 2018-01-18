@@ -7,22 +7,24 @@ using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 using System.Data;
 
+//WebForm1 conectado con clase BBDD
 
 namespace aspNetWeb
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
         BBDD bdatos;
-
-
+        
         public WebForm1()
         {
           bdatos = new BBDD();
-          
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            //Comprueba si esta siendo una carga por la respuesta de un usuario (true) o por el sistema (false)
+
             if (!IsPostBack)
             {
                 actualizarGridview();
@@ -30,6 +32,7 @@ namespace aspNetWeb
                 
         }
 
+        //Método cancelar
 
         protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
@@ -38,6 +41,7 @@ namespace aspNetWeb
             Response.Redirect("WebForm1.aspx");
         }
 
+        //Método borrar
 
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
@@ -47,6 +51,7 @@ namespace aspNetWeb
             Response.Redirect("WebForm1.aspx");
         }
 
+        //Método editar
 
         protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
         {
@@ -54,10 +59,14 @@ namespace aspNetWeb
             actualizarGridview(); 
         }
 
+        //Método actualizar
 
         protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             int id = int.Parse(GridView1.DataKeys[e.RowIndex].Value.ToString());
+
+            //Enlaza textBox del GriView con nuevos textBox para acceder a ellos
+
             TextBox nombre_text = (TextBox)GridView1.Rows[e.RowIndex].FindControl("nombre_text");
             TextBox apellido_text = (TextBox)GridView1.Rows[e.RowIndex].FindControl("apellido_text");
             TextBox telefono_text = (TextBox)GridView1.Rows[e.RowIndex].FindControl("telefono_text");
@@ -70,6 +79,7 @@ namespace aspNetWeb
             Response.Redirect("WebForm1.aspx");
         }
 
+        //Meter datos en el GridView y pintar tabla
 
         public void actualizarGridview()
         {
@@ -77,9 +87,12 @@ namespace aspNetWeb
             GridView1.DataBind();
         }
         
+        //Método para insertar datos
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            //Esta condición nos evalua que solo entre el botón insert 
+
             if (e.CommandName.Equals("insert"))
             {
                 TextBox nombre_text = (TextBox)GridView1.FooterRow.FindControl("nombre_insert_text");
@@ -94,6 +107,7 @@ namespace aspNetWeb
             }
         }
 
+        //Volver al WebForm principal
 
         protected void btn_volver_Click(object sender, EventArgs e)
         {
