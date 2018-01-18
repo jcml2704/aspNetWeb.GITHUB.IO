@@ -14,13 +14,13 @@ namespace aspNetWeb
 
 
         }
-
+        //conecta con el formulario que enseña la tabla
         protected void ver_btn_Click(object sender, EventArgs e)
         {
 
             Response.Redirect("WebForm2.aspx");
         }
-
+        //conecta con el formulario que edita la tabla
         protected void edit_btn_Click(object sender, EventArgs e)
         {
             Response.Redirect("WebForm1.aspx");

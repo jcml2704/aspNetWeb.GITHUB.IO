@@ -16,7 +16,7 @@ namespace aspNetWeb
         {
             bdatos = new BBDD();
         }
-
+        // Enseña la base de datos
         protected void Page_Load(object sender, EventArgs e)
         {
             GridView1.DataSource = bdatos.consulta();
@@ -24,6 +24,7 @@ namespace aspNetWeb
 
 
         }
+        //Conecta con el formulario de inicio
         protected void Button2_Click(object sender, EventArgs e)
         {
             Response.Redirect("WebForm3.aspx");
