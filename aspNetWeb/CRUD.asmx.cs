@@ -22,5 +22,32 @@ namespace aspNetWeb
         {
             return "Hola a todos";
         }
+
+
+        public object insert(object usuario)
+        {
+            cmd.CommandText = "INSERT INTO usuario (nombre,apellido,telefono,email,puesto,organizacion_id) VALUES ('" + nomb + "','" + ape + "','" + tlf + "','" + ema + "','" + puest + "'," + org + ")";
+            cmd.ExecuteNonQuery();
+            return null;
+        }
+
+        //Comando para eliminar una fila, para ello necesitamos recibir el id correspondiente de la fila que se quiere eliminar
+
+        public object delete(int id)
+        {
+            cmd.CommandText = "DELETE FROM usuario WHERE id=" + id;
+            cmd.ExecuteNonQuery();
+            return null;
+        }
+
+        //Comando para actualizar una fila, para ello necesitamos recibir los datos correspondiente que se van a modificar
+
+        public object update(object usuario)
+        {
+            cmd.CommandText = " UPDATE usuario SET nombre='" + nomb + "',apellido='" + apell + "',telefono='" + tlf + "',email='" + ema + "',puesto='" + pues + "',organizacion_id='" + org_id + "' WHERE id='" + id + "'";
+            cmd.ExecuteNonQuery();
+            return null;
+        }
+
     }
 }
