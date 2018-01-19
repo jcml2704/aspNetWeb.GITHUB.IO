@@ -14,7 +14,6 @@ namespace aspNetWeb
     public partial class WebForm1 : System.Web.UI.Page
     {
         BBDD bdatos;
-        
         public WebForm1()
         {
           bdatos = new BBDD();
