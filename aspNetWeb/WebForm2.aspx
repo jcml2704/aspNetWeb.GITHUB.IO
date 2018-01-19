@@ -10,37 +10,49 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 
      <script type="text/javascript">
-         $(document).ready(function() {
-             function guardar(){
-                 var nombre = $("#nombre_text").text();
-                 var apellido = $("#apellido_text").text();
-                 var telefono = $("#telefono_text").text();
-                 var email = $("#email_text").text();
-                 var puesto = $("#puesto_text").text();
-                 var organizacion_id = $("#organizacion_id_text").text();
-
-                 var user = "{'nombre':'" + nombre + "','apellido':'" + apellido + "','telefono':'" + telefono + "','email':'" + email + "','puesto':'" + puesto + "','organizacion_id':'" + organizacion_id + "'}";
-
-                 $.ajax(
-                  {
-                       url: "CRUD.asmx/GetDataAjax",
-                       data: user,
-                       dataType: "json",
-                       type: "POST",
-                       contentType: "application/json; charset=utf-8",
-                       success: function(msg) { alert(msg.d); },
-                       error: function(result) {
-                           alert("ERROR " + result.status + ' ' + result.statusText);
-                       }
-                    });
-
-             }
-
+         
+            
+         $(function () {
              $('#insertar_btn').click(function () {
                  guardar();
-                
-             })
-         });
+
+             });
+         })
+           
+
+         function guardar() {
+             var nom = $("#nombre_text").val();
+             var ape = $("#Apellido_text").val();
+             var tel = $("#telefono_text").val();
+             var ema = $("#email_text").val();
+             var pues = $("#puesto_text").val();
+             var org_id= $("#organizacion_id_text").val();
+
+             var usuario = {
+                 id:0,
+                 nombre: nom,
+                 apellido: ape,
+                 telefono: tel,
+                 email: ema,
+                 puesto: pues,
+                 organizacion_id: 0,
+                 organizacion:""
+             };
+
+             $.ajax(
+              {
+                  url: "http://localhost:54285/CRUD.asmx/insert",
+                  data: JSON.stringify({usuario: usuario}),
+                  dataType: "json",
+                  type: "POST",
+                  contentType: "application/json; charset=utf-8",
+                  success: function (response) {alert(response.d)  },
+                  error: function (response) {
+                      
+                  }
+              });
+
+         }
 
     </script>
 
