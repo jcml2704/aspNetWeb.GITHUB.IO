@@ -23,7 +23,7 @@
 
                  $.ajax(
                   {
-                       url: "CRUD.asmx.cs/CRUD",
+                       url: "CRUD.asmx/GetDataAjax",
                        data: user,
                        dataType: "json",
                        type: "POST",

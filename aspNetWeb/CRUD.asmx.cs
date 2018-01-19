@@ -18,8 +18,13 @@ namespace aspNetWeb
     public class CRUD : System.Web.Services.WebService
     {
 
-      
+
         
+        [WebMethod]
+        public static string GetDataAjax(string nombre, string apellido)
+        {
+            return string.Format("Bienvenido al mundo AJAX {0} {1}", nombre, apellido);
+        }
 
         [WebMethod]
         public string HelloWorld()
