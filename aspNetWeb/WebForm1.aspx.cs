@@ -27,6 +27,11 @@ namespace aspNetWeb
             if (!IsPostBack)
             {
                 actualizarGridview();
+
+                //DropDownList1.DataSource = bdatos.desplegable();
+                //DropDownList1.DataTextField = "nombre";
+                //DropDownList1.DataBind();
+               
             }
                 
         }
@@ -55,7 +60,12 @@ namespace aspNetWeb
         protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
         {
             GridView1.EditIndex = e.NewEditIndex;
-            actualizarGridview(); 
+            actualizarGridview();
+
+            DropDownList organizacion_id_text = (DropDownList)GridView1.Rows[e.NewEditIndex].FindControl("desplegable_editar");
+            organizacion_id_text.DataSource = bdatos.desplegable();
+            organizacion_id_text.DataTextField = "nombre";
+            organizacion_id_text.DataBind();
         }
 
         //Método actualizar
@@ -71,7 +81,7 @@ namespace aspNetWeb
             TextBox telefono_text = (TextBox)GridView1.Rows[e.RowIndex].FindControl("telefono_text");
             TextBox email_text = (TextBox)GridView1.Rows[e.RowIndex].FindControl("email_text");
             TextBox puesto_text = (TextBox)GridView1.Rows[e.RowIndex].FindControl("puesto_text");
-            TextBox organizacion_id_text = (TextBox)GridView1.Rows[e.RowIndex].FindControl("organizacion_id_text");
+            DropDownList organizacion_id_text = (DropDownList)GridView1.Rows[e.RowIndex].FindControl("desplegable_editar");
             bdatos.update(id, nombre_text.Text, apellido_text.Text,int.Parse(telefono_text.Text),email_text.Text,puesto_text.Text,int.Parse(organizacion_id_text.Text));
             GridView1.EditIndex = -1;
             actualizarGridview();
@@ -112,5 +122,8 @@ namespace aspNetWeb
         {
             Response.Redirect("WebForm3.aspx");
         }
+
+
+       
     }
 }

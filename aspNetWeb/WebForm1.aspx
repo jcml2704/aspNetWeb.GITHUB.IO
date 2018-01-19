@@ -4,6 +4,9 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+   
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 </head>
@@ -69,10 +72,12 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="organizacion_id">
                     <EditItemTemplate>
-                        <asp:TextBox ID="organizacion_id_text" runat="server" Text='<%# Eval("organizacion_id") %>'></asp:TextBox>
+                        <asp:DropDownList ID="desplegable_editar" runat="server">
+                        </asp:DropDownList>
                     </EditItemTemplate>
                     <FooterTemplate>
-                        <asp:TextBox ID="organizacion_id_insert_text" runat="server"></asp:TextBox>
+                        <asp:DropDownList ID="DropDownList1" runat="server">
+                        </asp:DropDownList>
                     </FooterTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label6" runat="server" Text='<%# Eval("organizacion_id") %>'></asp:Label>
@@ -106,6 +111,8 @@
         <div>
             <asp:Button ID="btn_volver" runat="server" OnClick="btn_volver_Click" Text="Volver" />
         </div>
+
+
     </form>
 </body>
 </html>

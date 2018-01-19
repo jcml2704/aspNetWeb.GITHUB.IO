@@ -6,6 +6,44 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+
+     <script type="text/javascript">
+         $(document).ready(function() {
+             function guardar(){
+                 var nombre = $("#nombre_text").text();
+                 var apellido = $("#apellido_text").text();
+                 var telefono = $("#telefono_text").text();
+                 var email = $("#email_text").text();
+                 var puesto = $("#puesto_text").text();
+                 var organizacion_id = $("#organizacion_id_text").text();
+
+                 var user = "{'nombre':'" + nombre + "','apellido':'" + apellido + "','telefono':'" + telefono + "','email':'" + email + "','puesto':'" + puesto + "','organizacion_id':'" + organizacion_id + "'}";
+
+                 $.ajax(
+                  {
+                       url: "CRUD.asmx.cs/CRUD",
+                       data: user,
+                       dataType: "json",
+                       type: "POST",
+                       contentType: "application/json; charset=utf-8",
+                       success: function(msg) { alert(msg.d); },
+                       error: function(result) {
+                           alert("ERROR " + result.status + ' ' + result.statusText);
+                       }
+                    });
+
+             }
+
+             $('#insertar_btn').click(function () {
+                 guardar();
+                
+             })
+         });
+
+    </script>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -26,6 +64,27 @@
         </div>
         <p>
             <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Volver" Width="63px" />
+        </p>
+        <p>
+            Nombre<asp:TextBox ID="nombre_text" runat="server" style="margin-left: 46px"></asp:TextBox>
+        </p>
+        <p>
+            Apellido<asp:TextBox ID="Apellido_text" runat="server" style="margin-left: 46px"></asp:TextBox>
+        </p>
+        <p>
+            Telefono<asp:TextBox ID="telefono_text" runat="server" style="margin-left: 46px"></asp:TextBox>
+        </p>
+        <p>
+            Email<asp:TextBox ID="email_text" runat="server" style="margin-left: 68px"></asp:TextBox>
+        </p>
+        <p>
+            Puesto<asp:TextBox ID="puesto_text" runat="server" style="margin-left: 61px"></asp:TextBox>
+        </p>
+        <p>
+            Organizacion_id<asp:TextBox ID="organizacion_id_text" runat="server" style="margin-left: 5px"></asp:TextBox>
+        </p>
+        <p>
+            <asp:Button ID="insertar_btn" runat="server" style="margin-left: 189px" Text="insertar" />
         </p>
     </form>
 </body>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using aspNetWeb.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,6 +18,9 @@ namespace aspNetWeb
     public class CRUD : System.Web.Services.WebService
     {
 
+      
+        
+
         [WebMethod]
         public string HelloWorld()
         {
@@ -24,7 +28,7 @@ namespace aspNetWeb
         }
 
 
-        public object insert(object usuario)
+     /*  public object insert(Usuario usuario)
         {
             cmd.CommandText = "INSERT INTO usuario (nombre,apellido,telefono,email,puesto,organizacion_id) VALUES ('" + nomb + "','" + ape + "','" + tlf + "','" + ema + "','" + puest + "'," + org + ")";
             cmd.ExecuteNonQuery();
@@ -42,12 +46,12 @@ namespace aspNetWeb
 
         //Comando para actualizar una fila, para ello necesitamos recibir los datos correspondiente que se van a modificar
 
-        public object update(object usuario)
+        public object update(Usuario usuario)
         {
             cmd.CommandText = " UPDATE usuario SET nombre='" + nomb + "',apellido='" + apell + "',telefono='" + tlf + "',email='" + ema + "',puesto='" + pues + "',organizacion_id='" + org_id + "' WHERE id='" + id + "'";
             cmd.ExecuteNonQuery();
             return null;
-        }
+        } */
 
     }
 }
