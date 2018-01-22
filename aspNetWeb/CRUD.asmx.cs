@@ -20,17 +20,17 @@ namespace aspNetWeb
     [System.Web.Script.Services.ScriptService]
     public class CRUD : System.Web.Services.WebService
     {
-        BBDD conectar;
-        Respuesta datoDevuelto;
+        public BBDD conectar;
+        public Respuesta datoDevuelto;
 
         [WebMethod]
         public string HelloWorld()
         {
             return "Hola a todos";
         }
-           //(ResponseFormat=ResponseFormat.Json)
+           
         [WebMethod]
-        [ScriptMethod ]
+        [ScriptMethod (ResponseFormat=ResponseFormat.Json)]
         public Respuesta insert(Usuario usuario)
         {
             conectar = new BBDD();

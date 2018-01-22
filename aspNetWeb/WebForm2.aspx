@@ -43,10 +43,11 @@
                   data: JSON.stringify({usuario: usuario}),
                   dataType: "json",
                   type: "POST",
+                  //async: false,
                   contentType: "application/json; charset=utf-8",
-                  success: function ( response) {alert(response.d)  },
+                  success: function ( response) {alert(response.d.info)  },
                   error: function (response) {
-                      
+                      alert("ERROR " + response.status + ' ' + response.statusText)
                   }
               });
          }
@@ -95,7 +96,7 @@
             Organizacion_id<asp:TextBox ID="organizacion_id_text" runat="server" style="margin-left: 5px"></asp:TextBox>
         </p>
         <p>
-            <asp:Button ID="insertar_btn" runat="server" style="margin-left: 189px" Text="insertar" />
+          <input type="button" id="insertar_btn" value="Insertar" style="margin-left:180px" />
         </p>
     </form>
 </body>

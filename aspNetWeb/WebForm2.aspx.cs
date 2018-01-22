@@ -19,9 +19,11 @@ namespace aspNetWeb
         // Enseña la base de datos
         protected void Page_Load(object sender, EventArgs e)
         {
-            GridView1.DataSource = bdatos.consulta();
-            GridView1.DataBind();
-
+            if (!IsPostBack)
+            {
+                GridView1.DataSource = bdatos.consulta();
+                GridView1.DataBind();
+            }
 
         }
         //Conecta con el formulario de inicio
