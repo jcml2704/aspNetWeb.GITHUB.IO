@@ -9,6 +9,10 @@ namespace aspNetWeb.Data
     {
         public bool ok;
         public string info;
-
+        public Respuesta(bool OK, string INFO)
+        {
+            ok = OK;
+            info = INFO;
+        }
     }
 }

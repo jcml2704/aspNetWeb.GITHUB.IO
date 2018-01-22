@@ -18,8 +18,6 @@
 
              });
          })
-           
-
          function guardar() {
              var nom = $("#nombre_text").val();
              var ape = $("#Apellido_text").val();
@@ -35,7 +33,7 @@
                  telefono: tel,
                  email: ema,
                  puesto: pues,
-                 organizacion_id: 0,
+                 organizacion_id: org_id,
                  organizacion:""
              };
 
@@ -46,13 +44,14 @@
                   dataType: "json",
                   type: "POST",
                   contentType: "application/json; charset=utf-8",
-                  success: function (response) {alert(response.d)  },
+                  success: function ( response) {alert(response.d)  },
                   error: function (response) {
                       
                   }
               });
-
          }
+
+
 
     </script>
 

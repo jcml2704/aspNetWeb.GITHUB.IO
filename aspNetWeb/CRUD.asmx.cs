@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Script.Services;
 using System.Web.Services;
+using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace aspNetWeb
 {
@@ -18,29 +20,26 @@ namespace aspNetWeb
     [System.Web.Script.Services.ScriptService]
     public class CRUD : System.Web.Services.WebService
     {
-
-
-        
-        [WebMethod]
-        public  string GetDataAjax(string nombre, string apellido)
-        {
-            return string.Format("Bienvenido al mundo AJAX {0} {1}", nombre, apellido);
-        }
+        BBDD conectar;
+        Respuesta datoDevuelto;
 
         [WebMethod]
         public string HelloWorld()
         {
             return "Hola a todos";
         }
-
+           //(ResponseFormat=ResponseFormat.Json)
         [WebMethod]
-        [ScriptMethod (ResponseFormat=ResponseFormat.Json)]
-        public object insert(Usuario usuario)
+        [ScriptMethod ]
+        public Respuesta insert(Usuario usuario)
         {
-          //  cmd.CommandText = "INSERT INTO usuario (nombre,apellido,telefono,email,puesto,organizacion_id) VALUES ('" + nomb + "','" + ape + "','" + tlf + "','" + ema + "','" + puest + "'," + org + ")";
-            //cmd.ExecuteNonQuery();
-            return null;
+            conectar = new BBDD();
+            conectar.insert(usuario.nombre, usuario.apellido, int.Parse(usuario.telefono), usuario.email, usuario.puesto, usuario.organizacion_id);
+            datoDevuelto = new Respuesta(true,"Dato guardado");
+            return datoDevuelto;
+            
         }
+        
 
         //Comando para eliminar una fila, para ello necesitamos recibir el id correspondiente de la fila que se quiere eliminar
         /*
