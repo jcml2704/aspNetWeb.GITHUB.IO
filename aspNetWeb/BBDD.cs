@@ -64,7 +64,7 @@ namespace aspNetWeb
 
         public DataTable desplegable()
         {
-            cmd = new MySqlCommand("SELECT nombre FROM organizacion", baseDeDatos);
+            cmd = new MySqlCommand("SELECT * FROM organizacion", baseDeDatos);
             DataTable dataTable = new DataTable();
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             da.Fill(dataTable);

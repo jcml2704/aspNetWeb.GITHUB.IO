@@ -24,7 +24,7 @@
              var tel = $("#telefono_text").val();
              var ema = $("#email_text").val();
              var pues = $("#puesto_text").val();
-             var org_id= $("#organizacion_id_text").val();
+             var org_id = $("#DropDownList1").val(); // aki es donde hay q buscar el id
 
              var usuario = {
                  id:0,
@@ -56,6 +56,24 @@
 
     </script>
 
+    <style type="text/css">
+        #nombre_text {
+            margin-left: 56px;
+        }
+        #Apellido_text {
+            margin-left: 56px;
+        }
+        #telefono_text {
+            margin-left: 55px;
+        }
+        #email_text {
+            margin-left: 76px;
+        }
+        #puesto_text {
+            margin-left: 67px;
+        }
+    </style>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -78,25 +96,27 @@
             <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Volver" Width="63px" />
         </p>
         <p>
-            Nombre<asp:TextBox ID="nombre_text" runat="server" style="margin-left: 46px"></asp:TextBox>
+            Nombre <input type="text" id="nombre_text" />
         </p>
         <p>
-            Apellido<asp:TextBox ID="Apellido_text" runat="server" style="margin-left: 46px"></asp:TextBox>
+            Apellido <input type="text" id="Apellido_text" />
         </p>
         <p>
-            Telefono<asp:TextBox ID="telefono_text" runat="server" style="margin-left: 46px"></asp:TextBox>
+            Telefono <input type="text" id="telefono_text" />
         </p>
         <p>
-            Email<asp:TextBox ID="email_text" runat="server" style="margin-left: 68px"></asp:TextBox>
+            Email <input type="email" id="email_text" />
         </p>
         <p>
-            Puesto<asp:TextBox ID="puesto_text" runat="server" style="margin-left: 61px"></asp:TextBox>
+            Puesto <input type="text" id="puesto_text" />
         </p>
         <p>
-            Organizacion_id<asp:TextBox ID="organizacion_id_text" runat="server" style="margin-left: 5px"></asp:TextBox>
+            Organizacion_id 
+            <asp:DropDownList ID="DropDownList1" runat="server" style="margin-left: 10px">
+            </asp:DropDownList>
         </p>
         <p>
-          <input type="button" id="insertar_btn" value="Insertar" style="margin-left:180px" />
+          <input type="button" id="insertar_btn" value="Insertar" style="margin-left:209px" />
         </p>
     </form>
 </body>

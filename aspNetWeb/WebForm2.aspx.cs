@@ -23,6 +23,10 @@ namespace aspNetWeb
             {
                 GridView1.DataSource = bdatos.consulta();
                 GridView1.DataBind();
+
+                DropDownList1.DataSource = bdatos.desplegable();
+                DropDownList1.DataTextField = "nombre";
+                DropDownList1.DataBind();
             }
 
         }
