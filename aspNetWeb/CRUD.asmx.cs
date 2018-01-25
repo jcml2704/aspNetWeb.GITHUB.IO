@@ -23,6 +23,11 @@ namespace aspNetWeb
         public BBDD conectar;
         public Respuesta datoDevuelto;
 
+        MySqlCommand cmd;
+        MySqlConnection baseDeDatos;
+        MySqlConnectionStringBuilder builder;
+        List<Usuario> lista;
+
         [WebMethod]
         public string HelloWorld()
         {
@@ -35,23 +40,37 @@ namespace aspNetWeb
         {
             conectar = new BBDD();
             conectar.insert(usuario.nombre, usuario.apellido, int.Parse(usuario.telefono), usuario.email, usuario.puesto, usuario.organizacion_id);
-            datoDevuelto = new Respuesta(true,"Dato guardado");
+            datoDevuelto = new Respuesta() {info="dato guardado" };
             return datoDevuelto;
             
         }
-        
-
-        //Comando para eliminar una fila, para ello necesitamos recibir el id correspondiente de la fila que se quiere eliminar
-        /*
-        public object delete(int id)
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public List<Usuario> getTable()
         {
-            cmd.CommandText = "DELETE FROM usuario WHERE id=" + id;
-            cmd.ExecuteNonQuery();
-            return null;
+            conectar = new BBDD();
+            lista = new List<Usuario>();
+            lista = conectar.tabla();
+            return lista; 
         }
 
-        //Comando para actualizar una fila, para ello necesitamos recibir los datos correspondiente que se van a modificar
 
+        //Comando para eliminar una fila, para ello necesitamos recibir el id correspondiente de la fila que se quiere eliminar
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public Respuesta delete(int id)
+        {
+            conectar = new BBDD();
+            conectar.delete(id);
+            datoDevuelto = new Respuesta() { info="dato eliminado"};
+            return datoDevuelto;
+        }
+
+        
+
+        //Comando para actualizar una fila, para ello necesitamos recibir los datos correspondiente que se van a modificar
+        /*
         public object update(Usuario usuario)
         {
             cmd.CommandText = " UPDATE usuario SET nombre='" + nomb + "',apellido='" + apell + "',telefono='" + tlf + "',email='" + ema + "',puesto='" + pues + "',organizacion_id='" + org_id + "' WHERE id='" + id + "'";

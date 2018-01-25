@@ -21,12 +21,15 @@ namespace aspNetWeb
         {
             if (!IsPostBack)
             {
-                GridView1.DataSource = bdatos.consulta();
-                GridView1.DataBind();
+               // GridView1.DataSource = bdatos.consulta();
+               // GridView1.DataBind();
 
                 DropDownList1.DataSource = bdatos.desplegable();
                 DropDownList1.DataTextField = "nombre";
+                DropDownList1.DataValueField = "Id";
+                
                 DropDownList1.DataBind();
+               // DropDownList1.Items.Insert(0, new ListItem("Selecione organización", ""));
             }
 
         }

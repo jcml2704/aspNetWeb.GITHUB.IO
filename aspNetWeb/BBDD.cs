@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
 using System.Data;
+using aspNetWeb.Data;
 
 namespace aspNetWeb
 {
@@ -12,6 +13,7 @@ namespace aspNetWeb
         MySqlCommand cmd;
         MySqlConnection baseDeDatos;
         MySqlConnectionStringBuilder builder;
+        List<Usuario> listaUsuario;
 
         //Constructor, conexión a la base de dato
 
@@ -68,7 +70,32 @@ namespace aspNetWeb
             DataTable dataTable = new DataTable();
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             da.Fill(dataTable);
+            
             return dataTable;
+        }
+
+        public List<Usuario> tabla()
+        {
+          listaUsuario=new List<Usuario>();
+
+            cmd = new MySqlCommand("SELECT * FROM usuario", baseDeDatos);
+            DataTable dataTable = new DataTable();
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            da.Fill(dataTable);
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                DataRow row = dataTable.Rows[i];
+                string ID = row[0].ToString();
+                string NOMBRE = row[1].ToString();
+                string APELLIDO = row[2].ToString();
+                string TELEFONO = row[3].ToString();
+                string EMAIL = row[4].ToString();
+                string PUESTO = row[5].ToString();
+                string ORGANIZACION_ID = row[6].ToString();
+
+                listaUsuario.Add(new Usuario() { Id = int.Parse(ID), nombre = NOMBRE, apellido = APELLIDO, telefono = TELEFONO, email = EMAIL, puesto = PUESTO, organizacion_id = int.Parse(ORGANIZACION_ID), organizacion = null });
+            }
+            return listaUsuario;
         }
 
 

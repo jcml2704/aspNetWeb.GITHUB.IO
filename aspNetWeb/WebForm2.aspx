@@ -17,6 +17,11 @@
                  guardar();
 
              });
+
+             $('#btnObtContactos').click(function () {
+                 getContactos();
+
+             });
          })
          function guardar() {
              var nom = $("#nombre_text").val();
@@ -24,7 +29,7 @@
              var tel = $("#telefono_text").val();
              var ema = $("#email_text").val();
              var pues = $("#puesto_text").val();
-             var org_id = $("#DropDownList1").val(); // aki es donde hay q buscar el id
+             var org_id = $("#DropDownList1").val();
 
              var usuario = {
                  id:0,
@@ -43,7 +48,6 @@
                   data: JSON.stringify({usuario: usuario}),
                   dataType: "json",
                   type: "POST",
-                  //async: false,
                   contentType: "application/json; charset=utf-8",
                   success: function ( response) {alert(response.d.info)  },
                   error: function (response) {
@@ -53,8 +57,60 @@
          }
 
 
+         function getContactos() { 
+             $.ajax({ 
+                 url: "http://localhost:54285/CRUD.asmx/getTable",
+                 data: "{}",
+                 dataType: "json",
+                 type: "POST",
+                 contentType: "application/json; charset=utf-8",
+                 success: function (response) { 
+                     var contactos =  response.d
+                                        
 
-    </script>
+                     $('#tablaContactos').empty();
+                     $('#tablaContactos').append('<tr><td><b>Nombre</b></td><td><b>Apellido</b></td><td><b>Telefono</b></td><td><b>EMail</b></td><td><b>puesto</b></td><td><b>organizacion_id</b></td></tr>');
+            
+                     for (var i = 0; i < contactos.length; i++) { 
+                         $('#tablaContactos').append('<tr>' + 
+                                               '<td>' + contactos[i].nombre + '</td>' +
+                                               '<td>' + contactos[i].apellido + '</td>' +
+                                               '<td>' + contactos[i].telefono + '</td>' + 
+                                               '<td>' + contactos[i].email + '</td>' + 
+                                               '<td>' + contactos[i].puesto + '</td>' +
+                                                '<td>' + contactos[i].organizacion_id + '</td>' +
+                                             '</tr>'); 
+                     }
+                 }, 
+                 error: function (result) { 
+                     alert('ERROR ' + result.status + ' ' + result.statusText); 
+                 } 
+             }); 
+         }
+
+
+       $(function(){$('#delete_btn').click(function(){eliminar();});})
+
+       function eliminar() {
+           var id = $("#borrar_text").val();
+
+
+           $.ajax({
+               url: "http://localhost:54285/CRUD.asmx/delete",
+               data: JSON.stringify({ id }),
+               dataType: "json",
+               type: "POST",
+               //async: false,
+               contentType: "application/json; charset=utf-8",
+               success: function (response) { alert(response.d.info) },
+               error: function (response) {
+                   alert("ERROR " + response.status + ' ' + response.statusText)
+               }
+           });
+       }
+
+   </script>
+
 
     <style type="text/css">
         #nombre_text {
@@ -72,25 +128,18 @@
         #puesto_text {
             margin-left: 67px;
         }
+        #delete_btn {
+            margin-left: 212px;
+        }
+        #borrar_text {
+            margin-left: 7px;
+        }
     </style>
 
 </head>
 <body>
     <form id="form1" runat="server">
-      <div>        
-        <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
-            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-            <EditRowStyle BackColor="#999999" />
-            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-            <SortedAscendingCellStyle BackColor="#E9E7E2" />
-            <SortedAscendingHeaderStyle BackColor="#506C8C" />
-            <SortedDescendingCellStyle BackColor="#FFFDF8" />
-            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
-        </asp:GridView>
+      <div>       
         </div>
         <p>
             <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Volver" Width="63px" />
@@ -117,7 +166,11 @@
         </p>
         <p>
           <input type="button" id="insertar_btn" value="Insertar" style="margin-left:209px" />
+          <input type="button" id="btnObtContactos" value="Obtener Contactos" /> <br/><br/> 
+          <input type="button" id="delete_btn" value="Borrar" />&nbsp;&nbsp; &nbsp;
+         ID: <input type="text" id="borrar_text" />
         </p>
     </form>
-</body>
+          <table id='tablaContactos' border="1"></table>  
+        </body>
 </html>

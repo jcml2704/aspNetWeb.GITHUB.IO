@@ -15,5 +15,12 @@ namespace aspNetWeb.Data
         public string puesto;
         public int organizacion_id;
         public string organizacion;
+
+
+      public Usuario()
+        {
+            
+        }
     }
+    
 }
