@@ -59,15 +59,13 @@ namespace aspNetWeb
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public Respuesta delete(int id)
+        public Respuesta delete(string id)
         {
             conectar = new BBDD();
-            conectar.delete(id);
+            conectar.delete(int.Parse(id));
             datoDevuelto = new Respuesta() { info="dato eliminado"};
             return datoDevuelto;
         }
-
-
 
         //Comando para actualizar una fila, para ello necesitamos recibir los datos correspondiente que se van a modificar
 
@@ -80,7 +78,8 @@ namespace aspNetWeb
             conectar.update(usuario.Id, usuario.nombre, usuario.apellido, int.Parse(usuario.telefono), usuario.email, usuario.puesto, usuario.organizacion_id);
             datoDevuelto = new Respuesta() { info = "dato actualizado" };
             return datoDevuelto;
-        } 
+
+        }
 
     }
 }
