@@ -57,6 +57,48 @@
          }
 
 
+         $(function () {
+             $('#update_btn').click(function () {
+                 update();
+
+             });
+
+         })
+         function update() {
+             var id1 = $("#borrar_text").val();
+             var nom = $("#nombre_text").val();
+             var ape = $("#Apellido_text").val();
+             var tel = $("#telefono_text").val();
+             var ema = $("#email_text").val();
+             var pues = $("#puesto_text").val();
+             var org_id = $("#DropDownList1").val();
+
+             var usuario = {
+                 id: id1,
+                 nombre: nom,
+                 apellido: ape,
+                 telefono: tel,
+                 email: ema,
+                 puesto: pues,
+                 organizacion_id: org_id,
+                 organizacion: ""
+             };
+
+             $.ajax(
+              {
+                  url: "http://localhost:54285/CRUD.asmx/update",
+                  data: JSON.stringify({ usuario: usuario }),
+                  dataType: "json",
+                  type: "POST",
+                  contentType: "application/json; charset=utf-8",
+                  success: function (response) { alert(response.d.info) },
+                  error: function (response) {
+                      alert("ERROR " + response.status + ' ' + response.statusText)
+                  }
+              });
+         }
+
+
          function getContactos() { 
              $.ajax({ 
                  url: "http://localhost:54285/CRUD.asmx/getTable",
@@ -165,6 +207,7 @@
             </asp:DropDownList>
         </p>
         <p>
+            <asp:Button ID="update_btn" runat="server" Text="Update" />
           <input type="button" id="insertar_btn" value="Insertar" style="margin-left:209px" />
           <input type="button" id="btnObtContactos" value="Obtener Contactos" /> <br/><br/> 
           <input type="button" id="delete_btn" value="Borrar" />&nbsp;&nbsp; &nbsp;

@@ -67,16 +67,20 @@ namespace aspNetWeb
             return datoDevuelto;
         }
 
-        
+
 
         //Comando para actualizar una fila, para ello necesitamos recibir los datos correspondiente que se van a modificar
-        /*
+
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public object update(Usuario usuario)
         {
-            cmd.CommandText = " UPDATE usuario SET nombre='" + nomb + "',apellido='" + apell + "',telefono='" + tlf + "',email='" + ema + "',puesto='" + pues + "',organizacion_id='" + org_id + "' WHERE id='" + id + "'";
-            cmd.ExecuteNonQuery();
-            return null;
-        } */
+            conectar = new BBDD();
+            conectar.update(usuario.Id, usuario.nombre, usuario.apellido, int.Parse(usuario.telefono), usuario.email, usuario.puesto, usuario.organizacion_id);
+            datoDevuelto = new Respuesta() { info = "dato actualizado" };
+            return datoDevuelto;
+        } 
 
     }
 }
