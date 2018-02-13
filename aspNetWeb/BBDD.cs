@@ -14,6 +14,7 @@ namespace aspNetWeb
         MySqlConnection baseDeDatos;
         MySqlConnectionStringBuilder builder;
         List<Usuario> listaUsuario;
+        List<organizacion> listaOrg;
 
         //Constructor, conexión a la base de dato
 
@@ -64,13 +65,14 @@ namespace aspNetWeb
             return dataTable;
         }
 
+       
+
         public DataTable desplegable()
         {
             cmd = new MySqlCommand("SELECT * FROM organizacion", baseDeDatos);
             DataTable dataTable = new DataTable();
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             da.Fill(dataTable);
-            
             return dataTable;
         }
 
@@ -96,6 +98,20 @@ namespace aspNetWeb
                 listaUsuario.Add(new Usuario() { Id = int.Parse(ID), nombre = NOMBRE, apellido = APELLIDO, telefono = TELEFONO, email = EMAIL, puesto = PUESTO, organizacion_id = int.Parse(ORGANIZACION_ID), organizacion = null });
             }
             return listaUsuario;
+        }
+
+        public List<organizacion> tablaOrg()
+        {
+            listaOrg = new List<organizacion>();
+            DataTable dataTable= desplegable();
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                DataRow row = dataTable.Rows[i];
+                string ID = row[0].ToString();
+                string ORG = row[1].ToString();
+                listaOrg.Add(new organizacion() { id = int.Parse(ID), org = ORG });
+            }
+            return listaOrg;
         }
 
 

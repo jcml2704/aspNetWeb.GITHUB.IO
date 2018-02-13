@@ -27,6 +27,7 @@ namespace aspNetWeb
         MySqlConnection baseDeDatos;
         MySqlConnectionStringBuilder builder;
         List<Usuario> lista;
+        List<organizacion> listaOrg;
 
         [WebMethod]
         public string HelloWorld()
@@ -52,6 +53,16 @@ namespace aspNetWeb
             lista = new List<Usuario>();
             lista = conectar.tabla();
             return lista; 
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public List<organizacion> orgConsulta()
+        {
+            conectar = new BBDD();
+            listaOrg = new List<organizacion>();
+            listaOrg = conectar.tablaOrg();
+            return listaOrg;
         }
 
 

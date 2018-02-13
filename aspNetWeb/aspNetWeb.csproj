@@ -107,6 +107,7 @@
       <DependentUpon>CRUD.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Data\organizacion.cs" />
     <Compile Include="Data\Respuesta.cs" />
     <Compile Include="Data\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
