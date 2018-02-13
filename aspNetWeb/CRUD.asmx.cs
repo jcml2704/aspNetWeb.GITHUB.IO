@@ -72,10 +72,10 @@ namespace aspNetWeb
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public object update(Usuario usuario)
+        public object update(string id, string nom, string ape, string tlfn, string ema, string puest, string org)
         {
             conectar = new BBDD();
-            conectar.update(usuario.Id, usuario.nombre, usuario.apellido, int.Parse(usuario.telefono), usuario.email, usuario.puesto, usuario.organizacion_id);
+            conectar.update(int.Parse(id), nom, ape, int.Parse(tlfn), ema, puest, int.Parse(org));
             datoDevuelto = new Respuesta() { info = "dato actualizado" };
             return datoDevuelto;
 
