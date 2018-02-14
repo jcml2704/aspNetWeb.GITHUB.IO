@@ -37,10 +37,10 @@ namespace aspNetWeb
            
         [WebMethod]
         [ScriptMethod (ResponseFormat=ResponseFormat.Json)]
-        public Respuesta insert(Usuario usuario)
+        public Respuesta insert(string nom, string ape, string tlfn, string ema, string puest, string org)
         {
             conectar = new BBDD();
-            conectar.insert(usuario.nombre, usuario.apellido, int.Parse(usuario.telefono), usuario.email, usuario.puesto, usuario.organizacion_id);
+            conectar.insert(nom, ape, int.Parse(tlfn), ema, puest, int.Parse(org));
             datoDevuelto = new Respuesta() {info="dato guardado" };
             return datoDevuelto;
             
